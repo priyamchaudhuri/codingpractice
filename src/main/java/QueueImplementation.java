@@ -9,7 +9,7 @@ public class QueueImplementation<V> {
         this.maxSize=size;
         this.front=0;
         this.back=-1;
-        arr=(V[])new Object();
+        arr=(V[])new Object[size];
         currentSize=0;
     }
 
@@ -29,13 +29,22 @@ public class QueueImplementation<V> {
         currentSize++;
     }
 
-    public void dequeue(){
+    public V dequeue(){
+        if (isEmpty()){
+            System.out.println("Queue size is empty");
+        }
+        currentSize--;
+        return arr[front--];
 
     }
 
 
     public static void main(String[] args) {
-
+        QueueImplementation<Integer> queueImplementation=new QueueImplementation(10);
+        queueImplementation.enqueue(10);
+        queueImplementation.enqueue(12);
+        System.out.println(queueImplementation.dequeue());
+        System.out.println(queueImplementation.currentSize);
     }
 
 
